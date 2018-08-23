@@ -1,0 +1,134 @@
+//https://github.com/LeonidasEsteban/keyframes-animation/blob/master/styles.styl
+//https://www.youtube.com/watch?v=u4n3fgUzJcQ
+
+//Variables
+$gris: #ccc;
+$fondo1: #407BA0;
+$fondo2: #214154;
+$fondo3: #13242F;
+
+//extenders
+%flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+//styles
+body,html{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: sans-serif;
+}
+.contenedor{
+    height: 100vh;
+    background: radial-gradient($fondo1,
+                                $fondo2,
+                                $fondo3);
+    @extend %flex-center;
+    .nubes{
+        position: relative; // para que el hijo se pege a nosotros
+        @extend %flex-center;
+        width: 220px;
+        height: 220px;
+        img{
+            z-index: 20;
+        }
+        .mapa{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: url('../img/mapa.png');
+            background-size: cover;
+            border-radius: 50%;
+            box-shadow: -40px -20px 0 0 rgba(#000, .15) inset,
+                        -70px -30px 0 0 rgba(#000, .1) inset,
+                        5px 5px 0 0 rgba(#fff, .3) inset;
+            animation: rotate 20s infinite linear;
+        }
+    }
+}
+// ESTRELLAS
+.estrella{
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    // animaciones
+    &:nth-child(2n){
+        animation: brillar 2s linear infinite;
+    }
+    &:nth-child(2n+1){
+        animation: brillar-2 2s linear infinite;
+    }
+    // estrellas
+    &:nth-child(1){
+        top: 20%;
+        left: 50%;
+    }
+    &:nth-child(2){
+        top: 30%;
+        left: 30%;
+    }
+    &:nth-child(3){
+        top: 90%;
+        left: 90%;
+    }
+    &:nth-child(4){
+        top: 80%;
+        left: 20%;
+    }
+    &:nth-child(5){
+        top: 30%;
+        left: 80%;
+    }
+    &:nth-child(6){
+        top: 70%;
+        left: 80%;
+    }
+    &:nth-child(7){
+        top: 80%;
+        left: 50%;
+    }
+    &:nth-child(8){
+        top: 80%;
+        left: 50%;
+    }
+    &:nth-child(9){
+        top: 35%;
+        left: 10%;
+    }
+    &:nth-child(10){
+        top: 60%;
+        left: 20%;
+    }
+}
+@keyframes rotate {
+    from{
+        background-position: left center;
+    } to{
+        background-position: -396px center;
+    }
+}
+@keyframes brillar {
+    0%{
+        box-shadow: 0 0 3px 3px rgba(#fff, .3);
+    }
+    90%{
+        box-shadow: 0 0 3px 3px rgba(#fff, .3);
+    }
+    100%{
+        box-shadow: 0 0 13px 13px rgba(#fff, .3);
+    }
+}
+@keyframes brillar-2 {
+    0%,35%, 50%{
+        box-shadow: 0 0 3px 3px rgba(#fff, .3);
+    }
+    45%{
+        box-shadow: 0 0 13px 13px rgba(#fff, .3);
+    }
+}
